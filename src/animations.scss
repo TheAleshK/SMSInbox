@@ -1,0 +1,32 @@
+@import '~bourbon/app/assets/stylesheets/_bourbon';
+@import '~bourbon-neat/app/assets/stylesheets/_neat';
+
+@include keyframes(pulsate) {
+  0% {
+    @include transform(scale(1));
+  }
+  50% {
+    @include transform(scale(1.5));
+  }
+  100% {
+    @include transform(scale(1));
+  }
+}
+
+@include keyframes(pulsatesmall) {
+  0% {
+    @include transform(scale(1));
+  }
+  50% {
+    @include transform(scale(1.2));
+  }
+  100% {
+    @include transform(scale(1));
+  }
+}
+
+/*@keyframes pulsate {
+    0% {-webkit-transform: scale(1, 1); opacity: 1.0;}
+    50% {-webkit-transform: scale(1.10, 1.10); opacity: 1.0;}
+    100% {-webkit-transform: scale(1, 1); opacity: 1.0;}
+}*/

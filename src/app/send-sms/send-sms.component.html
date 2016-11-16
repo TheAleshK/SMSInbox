@@ -1,0 +1,15 @@
+<div (click)="modalVisible=!modalVisible" [ngClass]="{'modal-overlay fadeIn': true, 'closed': !modalVisible}" id="modal-overlay1"></div>
+
+<div [ngClass]="{'modal1 fadeIn': true, 'closed': !modalVisible}" id="modal1">
+  <div class="modal-guts">
+    <h1>Pošlji SMS</h1>
+    <h2>{{message.stevilka}}</h2>
+    <hr>
+    <textarea (keyup)="validateText($event.target)" rows="8" cols="50" #newmessage></textarea>
+    <p>{{characterCount}} / 160</p>
+  </div>
+  <div class="buttons">
+    <button (click)="modalVisible=false" md-raised-button color="accent">Zapri</button>
+    <button (click)="sendMessage(newmessage.value); " md-raised-button color="warn">OK</button>
+  </div>
+</div>

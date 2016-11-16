@@ -1,0 +1,1 @@
+export const globalVar1: string = 'www.smscity.net';

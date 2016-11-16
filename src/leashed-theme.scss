@@ -1,0 +1,73 @@
+@import '~@angular/material/core/theming/all-theme';
+
+@include md-core();
+
+$primary: md-palette($md-indigo);
+$accent: md-palette($md-blue);
+
+$theme: md-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+
+
+.dark-theme {
+
+  [md-icon-button] {
+    color:white;
+  }
+
+  // .color0 {
+  //   background-color: darken(#FFF9C4,30%);
+  // }
+  // .color1 {
+  //   background-color: darken(#FFE0B2,30%);
+  // }
+  // .color2 {
+  //   background-color: darken(#D7CCC8,30%);
+  // }
+  // .color3 {
+  //   background-color: darken(#CFD8DC,30%);
+  // }
+  // .color4 {
+  //   background-color: darken(white,30%);
+  // }
+  div.datum, div.nickname, div.stevilka, div.newmessage div, div.asyncdate {
+    color: white !important;
+  }
+
+  asyncDate {
+    color: white !important;
+  }
+
+  .color0 {
+    background-color: darken(#4A148C,20%);
+  }
+  .color1 {
+    background-color: darken(#E65100,20%);
+  }
+  .color2 {
+    background-color: darken(#3E2723,20%);
+  }
+  .color3 {
+    background-color: darken(#1A237E,20%);
+  }
+  .color4 {
+    background-color: darken(#546E7A,20%);
+  }
+
+  md-toolbar.md-primary {
+    background-color: darken(#212121,0%) !important;
+  }
+
+
+  $dark-p: md-palette($md-grey, 100);
+  $dark-a: md-palette($md-blue-grey);
+  $dark-t: md-dark-theme($dark-p, $dark-a);
+  @include angular-material-theme($dark-t);
+
+}
+
+
+  
+
+

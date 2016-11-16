@@ -1,0 +1,141 @@
+<!--<div [ngClass]="{ 'dark-theme' : isDarkTheme}">-->
+<!--<div [class.dark-theme]="isDarkTheme">-->
+
+<div [class.dark-theme]="isDarkTheme">
+	<md-toolbar color="primary">
+
+		<span>
+			  SMSCity Inbox
+			  <h5>Prijavljeni ste: {{ticks}}</h5>
+    	</span>
+
+
+
+		<button md-icon-button [md-menu-trigger-for]="menu">
+      		<md-icon>help</md-icon>
+    	</button>
+
+
+
+	</md-toolbar>
+
+	<md-menu x-position="before" #menu="mdMenu">
+		<!--<button md-menu-item (click)="openDialog()">Settings</button>-->
+		<button md-menu-item (click)="showHelp()">Pomoč</button>
+		<button md-menu-item (click)="isDarkTheme=!isDarkTheme">Spremeni barvno shemo</button>
+		<button md-menu-item (click)="switchSMSCity()">Preklopi v SMSCity</button>
+		<button md-menu-item (click)="logOut()">Zapri</button>
+	</md-menu>
+
+	<md-sidenav-layout>
+		<md-sidenav align="start" mode="over" #leftnav>
+			<md-tab-group>
+				<md-tab>
+					<template md-tab-label>Details</template>
+					<template md-tab-content>
+						<p>Pošiljatelj: {{currentMessage.id}}</p>
+						<p>Message: {{currentMessage.vsebina}}</p>
+						<p>Datum: {{currentMessage.datum}}</p>
+						<button md-raised-button (click)="leftnav.close()" color="accent">CLOSE LEFT</button>
+					</template>
+				</md-tab>
+				<md-tab>
+					<template md-tab-label>Feed</template>
+					<template md-tab-content></template>
+				</md-tab>
+			</md-tab-group>
+		</md-sidenav>
+		<md-sidenav align="end" mode="over" #rightnav>
+
+			<div class="container">
+
+				<p>Za brisanje sporočila kliknite ikono <img src="assets/delete.png"> in nato potrdite brisanje</p>
+
+				<br>
+
+				<p>Obarvajte vrstico z izbiro barve <img src="assets/colors.png"></p>
+
+				<br>
+
+				<p>Poimenujte številko s klikom na ikono <img src="assets/renamenumber.png"></p>
+
+				<br>
+
+				<p>Pošljite SMS sporočilo uporabniku s klikom na ikono <img src="assets/sendmessage.png"></p>
+
+				<br><br><br>
+
+				<button md-raised-button (click)="rightnav.close()" color="accent">ZAPRI</button>
+			</div>
+		</md-sidenav>
+
+		<div class="center">
+			<md-spinner *ngIf="progressVisible==true;"></md-spinner>
+
+			<div class="container hvr-glow" (click)="refreshMessages($event)" [ngClass]="{colorGreen:newmessages>0}">
+				<div class="notification" *ngIf="newmessages">
+					Nova sporočila: <b>{{newmessages}}</b> Klikni za prikaz ...
+				</div>
+				<div class="colors" style="margin-right:40px; padding-top: 10px;">
+					<div class="colorSelector color0" (click)="filterColor('color0');"></div>
+					<div class="colorSelector color1" (click)="filterColor('color1');"></div>
+					<div class="colorSelector color2" (click)="filterColor('color2');"></div>
+					<div class="colorSelector color3 " (click)="filterColor('color3');"></div>
+					<div class="colorSelector color4 " (click)="filterColor('color4')"></div>
+				</div>
+			</div>
+
+			<div class="container hvr-glow" *ngFor="let message of messages" [ngClass]="{color0:message.barva=='color0',color1:message.barva=='color1',color2:message.barva=='color2',color3:message.barva=='color3',color4:message.barva=='color4'}">
+				<div class="firstrow">
+					<div class="newmessage">
+						<div *ngIf="message.id > tmplastId">Novo sporočilo!</div>
+					</div>
+					<div class="datum"> {{ message.datum | messageTime }}
+					</div>
+					<div class="asyncdate">
+						<asyncDate [inputDate]="message.datum"></asyncDate>
+					</div>
+					<!--<time-ago [time]="time"></time-ago>-->
+				</div>
+
+
+
+				<div class="stevilka">
+					<md-icon (click)="openDialog1(message)" class="icon-text stevilka">message</md-icon>{{message.stevilka}}
+				</div>
+				<div class="nickname">
+					<md-icon (click)="openDialog(message)" class="icon-text nickname">person</md-icon>{{message.nickname}}
+				</div>
+
+				<div class="colors">
+					<div class="colorSelector color0" (click)="setColor('color0',message,$event.target);"></div>
+					<div class="colorSelector color1" (click)="setColor('color1',message,$event.target);"></div>
+					<div class="colorSelector color2" (click)="setColor('color2',message,$event.target);"></div>
+					<div class="colorSelector color3 " (click)="setColor('color3',message,$event.target);"></div>
+					<div class="colorSelector color4 " (click)="setColor('color4',message,$event.target);"></div>
+				</div>
+
+				<div class="delete">
+					<md-icon (click)="warnDeleted(message)" class="icon-text delete">clear</md-icon>
+				</div>
+
+				<div class="vsebina">
+					<hr> {{message.vsebina}}
+				</div>
+
+
+
+				<div class="vsebinaposlana" *ngFor="let poslani of message.poslani">
+					<b>{{poslani.datum}}</b><br>{{poslani.vsebina}}
+				</div>
+
+			</div>
+
+		</div>
+
+	</md-sidenav-layout>
+
+</div>
+
+<setnickname #setnickname [message]="currentMessage" (nickNameChange)="setNickName($event.value);"></setnickname>
+<sendSMS #sendSMS [message]="currentMessage" (newmessageChange)="sendMessage($event.value);"></sendSMS>

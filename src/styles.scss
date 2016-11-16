@@ -1,0 +1,540 @@
+ /*You can add global styles to this file, and also import other style files */
+// @import url("bourbon/bourbon");
+// @import '/node_modules/bourbon/app/assets/stylesheets/_bourbon.scss';
+
+@import '~bourbon/app/assets/stylesheets/_bourbon';
+@import '~bourbon-neat/app/assets/stylesheets/_neat';
+/*@import '~normalize.css';*/
+
+
+@import url('~https://fonts.googleapis.com/icon?family=Material+Icons');
+/*@import 'buttons.css';*/
+@import 'animations.scss';
+/*@import 'node_modules/toastr-ng2/toastr';*/
+//@import url('~https://fonts.googleapis.com/icon?family=Material+Icons');
+/*@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';*/
+/*@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';*/
+/*@import '~@angular/material/core/theming/prebuilt/pink-bluegrey.css';*/
+/*@import '~@angular/material/core/theming/prebuilt/purple-green.css';*/
+
+$primary: #3f51b5;
+$color0 : #FFF9C4;
+$color1 : #FFE0B2;
+$color2 : #D7CCC8;
+$color3 : #CFD8DC;
+$color4 : white;
+$accent : red;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+span {
+    font-family: 'Open Sans', Verdana, sans-serif !important;
+}
+
+[md-menu-item] {
+  font-family: 'Open Sans', Verdana, sans-serif !important;
+}
+
+md-toolbar {
+  font-family: 'Open Sans', Verdana, sans-serif !important;
+}
+md-toolbar-row span {
+  font-family: 'Open Sans', Verdana, sans-serif !important;
+  color: white;
+}
+
+
+textarea {
+  // margin-top: 10px;
+  // padding: 0px 10px 10px 10px; 
+  font-family: 'Open Sans', Verdana, sans-serif;
+  font-size: 14px;
+  border-radius: 2px 2px 4px 4px;
+  box-shadow: 7px 10px 40px -9px rgba(0,0,0,0.44);
+}
+
+.modal, .modal1 {
+  /* This way it could be display flex or grid or whatever also. */
+  display: block;
+  /* Probably need media queries here */
+  width: 600px;
+  max-width: 100%;
+  height: 400px;
+  max-height: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  /* Use this for centering if unknown width/height */
+  transform: translate(-50%, -50%);
+  /* If known, negative margins are probably better (less chance of blurry text). */
+  /* margin: -200px 0 0 -200px; */
+  background: white;
+  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+  border-radius: 2px 2px 4px 4px;
+}
+
+.closed {
+  display: none;
+}
+.modal-overlay, .modal-overlay1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.6);
+}
+.modal-guts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 20px;
+  text-align: center;
+
+}
+
+div.buttons {
+    /*@include linear-gradient(bottom, red, orange);
+    font-size: golden-ratio(14px,  1);  */
+
+    position: absolute;
+    top:300px;
+    margin-top: 10px;
+    padding: 0px 10px 10px 10px; 
+    font-family: 'Open Sans', Verdana, sans-serif;
+    max-width: 100%;
+    width: 100%;
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    flex-flow: row wrap;
+    overflow: visible;
+    justify-content: space-around;
+    align-items: flex-end;
+  }
+
+html {
+  overflow-y: hidden
+}
+
+body {
+  font-family: 'Open Sans', Verdana, sans-serif;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  font-variant: small-caps;
+  padding: 10px;
+}
+
+h2 {
+  font-size: 18px;
+  padding: 10px;
+}
+
+h3 {
+  font-size: 14px;
+  padding: 10px;
+}
+
+h4 {
+  font-size: 12px;
+  padding: 10px;
+}
+
+h5 {
+  font-size: 12px;
+  /*font-weight: */
+}
+
+
+md-sidenav-layout {
+  height: 100vh;
+  background-color: #e2e1e0;
+}
+
+md-sidenav {
+  width: 500px;
+  padding: 10px;
+}
+
+md-input {
+  width: 450px;
+}
+
+md-toolbar {
+  font-family: 'Open Sans', Verdana, sans-serif;
+}
+
+md-toolbar-row {
+  justify-content: space-between;
+}
+
+[md-raised-button] {
+  width: 150px;
+}
+
+/* Glow */
+.hvr-glow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+}
+.hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+    margin-bottom: 10px;
+  }
+
+
+@media only screen and (min-width: 768px) {
+    /* tablets and desktop */
+    .center {
+        margin: auto;
+        width: 90%;
+        min-width: 400px;
+        max-width: 1000px;
+        padding: 10px 15px 15px 15px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    /* phones */
+    .center {
+        margin: auto;
+        width: 90%;
+        min-width: 200px;
+        padding: 0px 0px 0px 0px;
+
+    }
+    
+      md-sidenav {
+        width: 200px;
+        padding: 5px;
+      }
+
+    .container {
+
+      width:100%;
+      
+        p {
+          font-size: 11px !important;
+          text-align: left;
+          line-height: 14px;
+        }
+
+
+        div {
+          font-size: 11px !important;
+        }
+        .delete {
+          display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* portrait phones */
+      .center {
+      margin: auto;
+      width: 100%;
+      padding: 0px 0px 0px 0px;
+    }
+}
+
+
+
+
+
+
+div.container {
+  margin-top: 10px;
+  padding: 0px 10px 10px 10px; 
+  font-family: 'Open Sans', Verdana, sans-serif;
+  max-width: 100%;
+  width: 100%;
+  border-radius: 2px 2px 4px 4px;
+  box-shadow: 7px 10px 40px -9px rgba(0,0,0,0.44);
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  flex-flow: row wrap;
+  overflow: visible;
+
+  md-icon {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  
+  div.notification {
+    padding-top: 5px;
+    color: $primary;
+    font-size: 18px;
+    font-weight: 600;
+    font-variant: small-caps;
+    width: 70%;
+    text-align: left;
+    top: 0px;
+  }
+
+
+  div.firstrow {
+    display:flex;
+    /*flex-direction: column;*/
+    color: $primary;
+    font-size: 14px;
+    font-weight: 400;
+    width: 100%;
+    top: 0px;
+    justify-content: space-between;
+
+    div.newmessage {
+      flex: 4 4 20em;
+      text-align: left;
+      font-size: 11px;
+
+      div {
+        display: inline-block;
+        @include animation(pulsatesmall 1.5s linear 15);
+      }
+    } 
+
+    div.datum {
+      flex: 1 1 20em;
+      display: inline-block;
+      text-align: center;
+    } 
+
+    div.asyncdate {
+      flex: 2 2 20em;
+      display: inline-block;
+      
+    } 
+
+  }
+
+
+
+
+  div.delete {
+
+      font-size: 20px;
+      text-align: center;
+      margin-left: 15px;
+      position: relative;
+      top: -25px;
+      left: 20px;
+
+      md-icon {
+        background-color: #b71c1c;
+        color: white;
+        border-radius: 50% 50%;
+        border:1px solid lighten(black, 40%);
+        // box-shadow: 0 5px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+        height:24px;
+        width:24px;
+        padding-top: 1px;
+
+        &:hover {
+
+          //SOME BOURBON MIXINS
+
+          // Animation shorthand works the same as the CSS3 animation shorthand
+          @include animation(pulsate 1s linear infinite);
+          //@include animation(rotate 360deg linear infinite);
+          
+          cursor: pointer;
+          /*// The above outputs the same CSS as using independent, granular mixins.
+          @include animation-name(scale, slide);
+          @include animation-duration(2s);
+          @include animation-timing-function(ease);
+          @include animation-iteration-count(infinite);*/
+          }    
+      }
+
+  }
+
+  div.stevilka {
+    color: $primary;
+    font-size:14px;
+    width: 130px;
+
+    md-icon.stevilka {
+      font-size: 20px;
+      border-radius: 50% 50%;
+      
+      &:hover {
+          transform: translateY(-1px) translateX(0px);
+          box-shadow: 0 5px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+          cursor:pointer;
+        }    
+    }
+
+  }
+
+   div.nickname {
+
+    color: $primary;
+    font-size:14px;
+    text-align: left;
+    vertical-align: text-top;
+    // min-width: 200px; 
+    // max-width: 600px;
+
+    md-icon.nickname {
+      font-size: 20px;
+      border-radius: 50% 50%;
+      
+      &:hover {
+          transform: translateY(-1px) translateX(0px);
+          box-shadow: 0 5px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+          cursor:pointer;
+        }    
+    }
+
+
+  }
+
+  div.colors {
+
+    margin-left: auto;
+    width:120px;
+    font-size:12px;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    .colorSelector {
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,.3), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+        border:1px solid lighten(black, 40%);
+        border-radius: 50%;
+        height:18px;
+        width:18px;
+        margin-left:3px;
+        justify-content: space-around;
+      &:hover {
+        transform: translateY(-1px) translateX(0px);
+        box-shadow: 0 5px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+        cursor:pointer;    
+      &:active {
+            box-shadow: 0 3px 5px 0 rgba(0,0,0,.3), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+          }
+      }
+    }
+
+  }
+
+  div.vsebina {
+    font-size:16px;
+    width: 100%;
+    border-radius: 2px 2px 4px 4px;
+    padding-bottom: 5px;
+  }
+
+  div.vsebinaposlana {
+    font-size:12px;
+    font-style: italic;  
+    width: 100%;
+    border-radius: 2px 2px 4px 4px;
+    padding-top: 5px;
+  }
+
+
+
+
+}
+
+.color0 {
+  background-color: $color0;
+}
+.color1 {
+  background-color: $color1;
+}
+.color2 {
+  background-color:$color2;
+}
+.color3 {
+  background-color:$color3;
+}
+.color4 {
+  background-color:$color4;
+}
+.colorGreen {
+  background-color:#81C784;
+  // -webkit-animation: pulsate 2s linear;
+  // -webkit-animation-iteration-count: 30;
+
+  &:hover {
+    transform: translateY(-1px) translateX(0px);
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+    cursor:pointer;    
+  &:active {
+        box-shadow: 0 3px 5px 0 rgba(0,0,0,.3), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+      }
+  }  
+}
+
+
+
+
+ .fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  }
+  @keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  } 
+
+ .fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+  }
+  @keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+  } 
+
+
+
+
