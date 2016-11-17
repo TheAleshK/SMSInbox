@@ -11,7 +11,7 @@ import { sendSMSComponent } from './send-sms/send-sms.component';
 
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Observable } from 'rxjs/Rx';
-// import { ToastrService } from 'toastr-ng2';
+
 
 import * as myGlobals from '../globals';
 
@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
 
   constructor(public toastr: ToastsManager, private _dataService: DataServiceService, public dialog: MdDialog, public vcr: ViewContainerRef) {
 
-    // this.toastrService.viewContainerRef = this.vcr;
+    this.toastr.setRootViewContainerRef(this.vcr); //NEDDED
 
   }
 
@@ -72,8 +72,6 @@ export class AppComponent implements OnInit {
 
     this.progressVisible = false;
     this.getData();
-
-    // this.toastrService.viewContainerRef = this.vcr;
 
 
     this.timer1.subscribe(this.getData.bind(this));

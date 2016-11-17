@@ -10,7 +10,7 @@ import { ToastModule, ToastOptions } from 'ng2-toastr/ng2-toastr';
 import { setNickNameComponent } from './setnickname/setnickname.component';
 import { sendSMSComponent } from './send-sms/send-sms.component';
 import { AsyncDatePipe } from './shared/async-date.pipe';
-// import { MyModalComponent } from './my-modal/my-modal.component';
+
 
 import { enableProdMode } from '@angular/core';
 
@@ -21,7 +21,7 @@ let options: any = {
 };
 
 
-enableProdMode();
+//enableProdMode();
 
 @NgModule({
   declarations: [

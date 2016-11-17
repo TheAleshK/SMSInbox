@@ -10,7 +10,8 @@
 @import url('~https://fonts.googleapis.com/icon?family=Material+Icons');
 /*@import 'buttons.css';*/
 @import 'animations.scss';
-/*@import 'node_modules/toastr-ng2/toastr';*/
+@import '../node_modules/ng2-toastr/bundles/ng2-toastr.min.css'; //NEDDED
+/*@import '~node_modules/toastr-ng2/toastr';*/
 //@import url('~https://fonts.googleapis.com/icon?family=Material+Icons');
 /*@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';*/
 /*@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';*/
@@ -37,6 +38,7 @@ span {
 
 [md-menu-item] {
   font-family: 'Open Sans', Verdana, sans-serif !important;
+  background-color: black;
 }
 
 md-toolbar {
